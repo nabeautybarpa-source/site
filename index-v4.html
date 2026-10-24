@@ -1,0 +1,2316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ============================================================
+       SEO META — edit the title, description, and keywords below
+       ============================================================ -->
+  <title>NA Beauty Bar | Before &amp; After Transformations · Lash &amp; Brow Studio in Morrisville, PA</title>
+  <meta name="description" content="NA Beauty Bar is a boutique lash extension and brow studio in Morrisville, PA (229 Plaza Blvd, Unit 26). Offering classic, hybrid, and volume lash extensions, lash lifts, brow lamination, shaping, and tinting." />
+  <meta name="keywords" content="NA Beauty Bar, lash extensions Morrisville PA, brow studio Morrisville PA, lash lift, brow lamination, volume lashes, Morrisville PA lash bar" />
+  <meta property="og:title" content="NA Beauty Bar — Lash &amp; Brow Artistry" />
+  <meta property="og:description" content="Boutique lash extension &amp; brow studio in Morrisville, PA. Precision artistry in a warm, intimate setting." />
+  <meta property="og:type" content="website" />
+
+  <!-- Google Fonts: Cormorant Garamond (elegant serif headings) + Inter (clean body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ============================================================
+       DESIGN TOKENS — palette, type scale, spacing
+       ============================================================ */
+    :root {
+      /* Palette */
+      --cream:        hsl(38, 30%, 96%);
+      --cream-mid:    hsl(36, 20%, 91%);
+      --blush:        hsl(14, 22%, 85%);
+      --taupe:        hsl(30, 12%, 55%);
+      --taupe-dark:   hsl(28, 10%, 35%);
+      --charcoal:     hsl(25, 8%, 18%);
+      --accent:       hsl(16, 48%, 38%);    /* deep terracotta */
+      --accent-light: hsl(16, 38%, 92%);
+      --accent-hover: hsl(16, 52%, 30%);
+
+      /* Champagne (secondary luxe accent) */
+      --champagne:       hsl(41, 52%, 82%);
+      --champagne-deep:  hsl(38, 42%, 58%);
+      --champagne-light: hsl(42, 55%, 93%);
+
+      --white:        #ffffff;
+
+      /* Typography */
+      --font-serif:   'Cormorant Garamond', Georgia, serif;
+      --font-sans:    'Inter', system-ui, sans-serif;
+
+      /* Spacing */
+      --section-pad:  clamp(4rem, 8vw, 7rem) clamp(1.25rem, 5vw, 4rem);
+      --card-radius:  1rem;
+      --nav-h:        68px;
+
+      /* Transitions */
+      --ease-out:     cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    /* ============================================================
+       RESET & BASE
+       ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; scroll-padding-top: var(--nav-h); }
+    body {
+      font-family: var(--font-sans);
+      font-size: 1rem;
+      line-height: 1.7;
+      color: var(--charcoal);
+      background: var(--cream);
+    }
+    img { display: block; max-width: 100%; height: auto; }
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
+    button { cursor: pointer; border: none; background: none; font: inherit; }
+
+    /* Branded text selection + scrollbar */
+    ::selection { background: hsl(16 48% 38% / 0.9); color: var(--cream); }
+    html { scrollbar-width: thin; scrollbar-color: var(--taupe) var(--cream-mid); }
+    ::-webkit-scrollbar { width: 10px; }
+    ::-webkit-scrollbar-track { background: var(--cream-mid); }
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(var(--taupe), var(--taupe-dark));
+      border-radius: 8px;
+      border: 2px solid var(--cream-mid);
+    }
+    ::-webkit-scrollbar-thumb:hover { background: var(--taupe-dark); }
+
+    /* ============================================================
+       SECTION LAYERING — curves, glows, watermarks
+       ============================================================ */
+    main > section { position: relative; overflow: hidden; }
+
+    /* Soft curved transition drawn in the PREVIOUS section's color */
+    .curve {
+      position: absolute;
+      top: -1px;
+      left: 0;
+      width: 100%;
+      height: clamp(26px, 4vw, 56px);
+      display: block;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Gentle blush/champagne radial glows behind cream sections */
+    .glow::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(620px circle at 86% 10%, hsl(14 40% 78% / 0.32), transparent 65%),
+        radial-gradient(520px circle at 6% 90%, hsl(41 52% 82% / 0.38), transparent 65%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Oversized serif watermark words */
+    .watermark {
+      position: absolute;
+      z-index: 0;
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-weight: 300;
+      font-size: clamp(7rem, 19vw, 16rem);
+      line-height: 1;
+      letter-spacing: 0.02em;
+      color: hsl(16 48% 38% / 0.05);
+      user-select: none;
+      pointer-events: none;
+      white-space: nowrap;
+    }
+    .wm-about    { top: 4%;  right: -1.5%; }
+    .wm-services { bottom: 3%; left: -2%; }
+    .wm-gallery  { top: 6%;  right: -2.5%; }
+    .wm-contact  { bottom: 1%; right: -2%; color: hsl(41 52% 82% / 0.06); }
+
+    /* Keep real content above decorative layers */
+    .section-intro, .services-wrapper, .accordion-wrap,
+    .about-grid, .gallery-grid, .reviews-grid,
+    .location-grid, .contact-grid {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ============================================================
+       TYPOGRAPHY HELPERS
+       ============================================================ */
+    .eyebrow {
+      font-family: var(--font-sans);
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+    h1, h2, h3, h4 {
+      font-family: var(--font-serif);
+      font-weight: 400;
+      line-height: 1.15;
+    }
+    h1 { font-size: clamp(2.8rem, 7vw, 5rem); }
+    h2 { font-size: clamp(2rem, 4.5vw, 3rem); }
+    h3 { font-size: clamp(1.25rem, 2.5vw, 1.75rem); }
+
+    .text-center { text-align: center; }
+    .section-intro {
+      max-width: 600px;
+      margin: 0 auto 3.5rem;
+      color: var(--taupe-dark);
+    }
+    .section-intro p { margin-top: 0.75rem; }
+
+    /* Decorative flourish lines beside centered eyebrows */
+    .section-intro .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.9rem;
+    }
+    .section-intro .eyebrow::before,
+    .section-intro .eyebrow::after {
+      content: '';
+      height: 1px;
+      width: clamp(1.6rem, 5vw, 3rem);
+      background: linear-gradient(to right, transparent, var(--champagne-deep));
+    }
+    .section-intro .eyebrow::after {
+      background: linear-gradient(to left, transparent, var(--champagne-deep));
+    }
+
+    /* ============================================================
+       BUTTONS
+       ============================================================ */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.75rem;
+      border-radius: 3rem;
+      font-family: var(--font-sans);
+      font-size: 0.875rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      transition: transform 0.2s var(--ease-out), box-shadow 0.2s var(--ease-out), background-color 0.2s;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn:active { transform: translateY(0); }
+    .btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+    .btn-primary {
+      position: relative;
+      overflow: hidden;
+      background: var(--accent);
+      color: var(--white);
+      box-shadow: 0 4px 18px hsl(16 48% 38% / 0.35);
+    }
+    /* Shimmer sweep on hover */
+    .btn-primary::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -80%;
+      width: 50%;
+      height: 100%;
+      background: linear-gradient(105deg, transparent, hsl(42 55% 93% / 0.35), transparent);
+      transform: skewX(-20deg);
+      transition: left 0.65s ease;
+      pointer-events: none;
+    }
+    .btn-primary:hover::after { left: 135%; }
+    .btn-primary:hover {
+      background: var(--accent-hover);
+      box-shadow: 0 6px 24px hsl(16 48% 38% / 0.45);
+    }
+    .btn-secondary {
+      background: transparent;
+      color: var(--charcoal);
+      border: 1.5px solid hsl(25 8% 18% / 0.35);
+    }
+    .btn-secondary:hover { border-color: var(--charcoal); background: hsl(25 8% 18% / 0.05); }
+
+    /* ============================================================
+       NAVIGATION — sticky, blurs on scroll
+       ============================================================ */
+    #site-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      height: var(--nav-h);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 clamp(1.25rem, 5vw, 3.5rem);
+      background: hsl(38 30% 96% / 0.88);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid hsl(30 12% 55% / 0.18);
+      transition: box-shadow 0.3s;
+    }
+    #site-nav.scrolled { box-shadow: 0 2px 20px hsl(25 8% 18% / 0.08); }
+
+    .nav-logo {
+      display: inline-flex;
+      align-items: center;
+      text-decoration: none;
+      line-height: 1;
+    }
+    .nav-logo-img {
+      height: clamp(34px, 4.2vw, 44px);
+      width: auto;
+      max-width: 220px;
+      object-fit: contain;
+      display: block;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+    .nav-logo:hover .nav-logo-img {
+      opacity: 0.88;
+      transform: scale(1.02);
+    }
+    @media (max-width: 600px) {
+      .nav-logo-img { height: 32px; max-width: 175px; }
+    }
+
+    .footer-logo-img {
+      height: 34px;
+      width: auto;
+      max-width: 190px;
+      object-fit: contain;
+      filter: brightness(0) invert(1);
+      opacity: 0.88;
+      margin-bottom: 0.85rem;
+      display: inline-block;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+    .nav-links a {
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--taupe-dark);
+      transition: color 0.2s;
+      position: relative;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -3px;
+      left: 0; right: 0;
+      height: 1.5px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.25s var(--ease-out);
+    }
+    .nav-links a:hover { color: var(--accent); }
+    .nav-links a:hover::after { transform: scaleX(1); }
+    .nav-links a.active { color: var(--accent); }
+    .nav-links a.active::after { transform: scaleX(1); }
+
+    /* Blended Book Now Button in Navigation */
+    #nav-book-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.42rem 1.15rem;
+      font-size: 0.76rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--charcoal);
+      background: transparent;
+      border: 1.5px solid hsl(30 12% 55% / 0.35);
+      border-radius: 2rem;
+      box-shadow: none;
+      transform: none;
+      transition: all 0.25s ease;
+    }
+    #nav-book-btn::after { display: none; }
+    #nav-book-btn:hover {
+      background: var(--charcoal);
+      color: var(--white);
+      border-color: var(--charcoal);
+      transform: none;
+      box-shadow: none;
+    }
+
+    /* Mobile hamburger */
+    #nav-toggle {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 28px;
+      height: 28px;
+      padding: 0;
+    }
+    #nav-toggle span {
+      display: block;
+      height: 1.5px;
+      background: var(--charcoal);
+      border-radius: 2px;
+      transition: transform 0.3s, opacity 0.2s;
+    }
+    #nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    #nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+    #nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+    @media (max-width: 768px) {
+      #nav-toggle { display: flex; }
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        position: fixed;
+        inset: var(--nav-h) 0 0 0;
+        background: var(--cream);
+        padding: 2.5rem 2rem;
+        gap: 0;
+        overflow-y: auto;
+      }
+      .nav-links.open { display: flex; }
+      .nav-links a {
+        font-size: 1.1rem;
+        padding: 0.85rem 0;
+        border-bottom: 1px solid var(--cream-mid);
+        display: block;
+        width: 100%;
+      }
+      .nav-links a.active::after { display: none; }
+      .nav-links .btn { margin-top: 1rem; align-self: flex-start; }
+    }
+
+    /* ============================================================
+       HERO SECTION
+       ============================================================ */
+    #home {
+      position: relative;
+      min-height: calc(100svh - var(--nav-h));
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: var(--charcoal);
+    }
+    .hero-bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 20%;
+      opacity: 0.82;
+    }
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(130% 100% at 20% 30%, transparent 42%, hsl(25 8% 6% / 0.5) 100%),
+        linear-gradient(
+          102deg,
+          hsl(24 10% 7% / 0.82) 0%,
+          hsl(24 10% 7% / 0.5) 50%,
+          hsl(24 10% 7% / 0.16) 100%
+        );
+    }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      padding: clamp(3rem, 8vw, 6rem) clamp(1.5rem, 7vw, 5rem);
+      max-width: 680px;
+      animation: heroFadeUp 0.9s var(--ease-out) both;
+    }
+    @keyframes heroFadeUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .hero-content .eyebrow { color: hsl(41 50% 82%); margin-bottom: 0.75rem; }
+    .hero-content h1 {
+      color: var(--white);
+      font-weight: 300;
+      margin-bottom: 1.1rem;
+    }
+    .hero-content h1 em { font-style: italic; color: hsl(41 45% 84%); }
+
+    /* Delicate champagne rule with diamond */
+    .hero-rule {
+      position: relative;
+      width: 68px;
+      height: 1px;
+      margin-bottom: 1.5rem;
+      background: linear-gradient(to right, var(--champagne), transparent);
+    }
+    .hero-rule::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: -2.5px;
+      width: 6px;
+      height: 6px;
+      transform: rotate(45deg);
+      background: var(--champagne);
+    }
+
+    .hero-tagline {
+      color: hsl(38 30% 88% / 0.88);
+      font-size: clamp(1rem, 2.2vw, 1.2rem);
+      font-weight: 300;
+      margin-bottom: 2.25rem;
+      max-width: 480px;
+    }
+    .hero-ctas { display: flex; flex-wrap: wrap; gap: 0.85rem; }
+    .hero-ctas .btn-secondary { color: var(--white); border-color: hsl(38 30% 88% / 0.6); }
+    .hero-ctas .btn-secondary:hover { background: hsl(38 30% 88% / 0.12); border-color: var(--white); }
+
+    /* Floating glass review chip */
+    .hero-chip {
+      position: absolute;
+      right: clamp(1.5rem, 6vw, 4.5rem);
+      bottom: 24%;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      padding: 0.7rem 1.15rem;
+      border-radius: 999px;
+      background: hsl(38 30% 96% / 0.1);
+      border: 1px solid hsl(38 30% 96% / 0.22);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      box-shadow: 0 8px 32px hsl(25 8% 5% / 0.35);
+      color: hsl(38 30% 92%);
+      font-size: 0.8rem;
+      letter-spacing: 0.04em;
+      animation: heroFadeUp 1.1s 0.45s var(--ease-out) both;
+    }
+    .hero-chip-stars {
+      color: var(--champagne);
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+    }
+    .hero-chip strong { color: var(--white); font-weight: 600; }
+    @media (max-width: 900px) { .hero-chip { display: none; } }
+
+    .hero-scroll-cue {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      color: hsl(38 30% 88% / 0.5);
+      font-size: 0.68rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      animation: scrollPulse 2.4s ease-in-out infinite;
+    }
+    .hero-scroll-cue::after {
+      content: '';
+      display: block;
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(to bottom, hsl(38 30% 88% / 0.5), transparent);
+    }
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 0.5; transform: translateX(-50%) translateY(0); }
+      50% { opacity: 1; transform: translateX(-50%) translateY(5px); }
+    }
+
+    /* ============================================================
+       ABOUT SECTION
+       ============================================================ */
+    #about {
+      padding: var(--section-pad);
+      background: var(--white);
+    }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    @media (max-width: 768px) { .about-grid { grid-template-columns: 1fr; gap: 2.5rem; } }
+    .about-text .eyebrow { margin-bottom: 0.6rem; }
+    .about-text h2 { margin-bottom: 1.25rem; }
+    .about-text p {
+      color: var(--taupe-dark);
+      font-size: 1.05rem;
+      font-weight: 300;
+      margin-bottom: 1.25rem;
+    }
+    .trust-badges { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 2rem; }
+    .badge {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      padding: 1rem;
+      background: var(--cream);
+      border-radius: var(--card-radius);
+      border: 1px solid var(--cream-mid);
+      transition: box-shadow 0.25s var(--ease-out), transform 0.25s var(--ease-out), border-color 0.25s;
+    }
+    .badge:hover {
+      transform: translateY(-2px);
+      border-color: hsl(41 52% 82% / 0.8);
+      box-shadow: 0 6px 20px hsl(38 42% 58% / 0.15);
+    }
+    .badge-icon {
+      width: 38px; height: 38px;
+      background: var(--accent-light);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 1.1rem;
+    }
+    .badge-text strong { display: block; font-size: 0.82rem; font-weight: 600; letter-spacing: 0.04em; color: var(--charcoal); margin-bottom: 0.1rem; }
+    .badge-text span { font-size: 0.78rem; color: var(--taupe); }
+
+    .about-image-wrap {
+      position: relative;
+      border-radius: var(--card-radius);
+      overflow: hidden;
+      aspect-ratio: 4/5;
+    }
+    .about-image-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.7s var(--ease-out); }
+    .about-image-wrap:hover img { transform: scale(1.03); }
+    .about-image-wrap::before {
+      content: '';
+      position: absolute;
+      inset: -2px;
+      border: 2px solid var(--champagne-light);
+      border-radius: calc(var(--card-radius) + 2px);
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    /* ============================================================
+       SERVICES & PRICING SECTION
+       ============================================================ */
+    #services { padding: var(--section-pad); background: var(--cream); }
+    .services-wrapper { max-width: 1050px; margin: 0 auto; }
+    .service-category { margin-bottom: 3.5rem; }
+    .service-category:last-child { margin-bottom: 0; }
+    .category-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.25rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1.5px solid var(--cream-mid);
+    }
+    .category-header h3 { color: var(--charcoal); }
+    .category-pill {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      background: var(--champagne-light);
+      color: var(--accent-hover);
+      padding: 0.25rem 0.7rem;
+      border-radius: 2rem;
+    }
+    .service-table { width: 100%; border-collapse: separate; border-spacing: 0 0.5rem; }
+    .service-table thead th {
+      font-family: var(--font-sans);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--taupe);
+      padding: 0.4rem 1rem;
+      text-align: left;
+    }
+    .service-table thead th:last-child { text-align: right; }
+    .service-row {
+      background: var(--white);
+      border-radius: var(--card-radius);
+      transition: box-shadow 0.2s, transform 0.2s var(--ease-out);
+    }
+    .service-row:hover { box-shadow: 0 4px 22px hsl(25 8% 18% / 0.07); transform: translateY(-1px); }
+    .service-row:hover td:first-child { box-shadow: inset 3px 0 0 0 var(--accent); }
+    .service-row td { padding: 1rem 1rem; vertical-align: middle; transition: box-shadow 0.2s; }
+    .service-row td:first-child { border-radius: var(--card-radius) 0 0 var(--card-radius); }
+    .service-row td:last-child  { border-radius: 0 var(--card-radius) var(--card-radius) 0; text-align: right; }
+    .service-name { font-family: var(--font-serif); font-size: 1.08rem; font-weight: 400; color: var(--charcoal); display: block; }
+    .service-badge {
+      display: inline-block;
+      margin-left: 0.6rem;
+      padding: 0.14rem 0.6rem;
+      font-family: var(--font-sans);
+      font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--white);
+      background: linear-gradient(120deg, var(--accent), var(--accent-hover));
+      border-radius: 2rem;
+      vertical-align: 2px;
+    }
+    .service-desc { font-size: 0.82rem; color: var(--taupe-dark); margin-top: 0.2rem; display: block; line-height: 1.45; }
+    .service-duration { font-size: 0.86rem; color: var(--taupe-dark); font-weight: 500; white-space: nowrap; text-align: right; }
+    .services-book-cta { margin-top: 2.5rem; text-align: center; }
+    .fresha-badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.45rem 1.1rem;
+      background: var(--white);
+      border: 1px solid var(--champagne-deep);
+      border-radius: 2rem;
+      font-size: 0.82rem;
+      color: var(--charcoal);
+      text-decoration: none;
+      box-shadow: 0 2px 12px hsl(25 8% 18% / 0.04);
+      transition: all 0.25s ease;
+    }
+    .fresha-badge-pill:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 18px hsl(25 8% 18% / 0.08);
+      border-color: var(--accent);
+    }
+
+    @media (max-width: 600px) {
+      .service-table thead { display: none; }
+      .service-table tbody, .service-row, .service-row td { display: block; width: 100%; }
+      .service-row { margin-bottom: 0.5rem; border-radius: var(--card-radius); }
+      .service-row td { padding: 0.6rem 1rem; border-radius: 0 !important; }
+      .service-row:hover td:first-child { box-shadow: none; }
+      .service-row td[data-label]::before { content: attr(data-label) ': '; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--taupe); }
+      .service-row td:last-child { text-align: left; }
+    }
+
+    /* ============================================================
+       GALLERY SECTION
+       ============================================================ */
+    #gallery { padding: var(--section-pad); background: var(--white); }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.75rem;
+      max-width: 1050px;
+      margin: 0 auto;
+    }
+    @media (max-width: 640px) {
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.5rem;
+      }
+    }
+
+    /* Mosaic layout on desktop — feature tiles break the uniform grid */
+    @media (min-width: 900px) {
+      .gallery-grid {
+        grid-template-columns: repeat(4, 1fr);
+        grid-auto-rows: clamp(150px, 17vw, 215px);
+        grid-auto-flow: dense;
+        gap: 0.9rem;
+      }
+      .gallery-item { aspect-ratio: auto; height: 100%; }
+      .gallery-item:nth-child(1) { grid-column: span 2; grid-row: span 2; }
+      .gallery-item:nth-child(8) { grid-column: span 2; grid-row: span 2; }
+      .gallery-item:nth-child(9) { grid-column: span 2; }
+    }
+
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 0.75rem;
+      aspect-ratio: 3/4;
+      background: var(--cream-mid);
+      box-shadow: 0 4px 18px hsl(25 8% 18% / 0.05);
+      transition: box-shadow 0.3s ease, transform 0.3s ease;
+    }
+    .gallery-item:hover {
+      box-shadow: 0 10px 30px hsl(25 8% 18% / 0.12);
+      transform: translateY(-2px);
+    }
+    .gallery-btn {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      display: block;
+    }
+
+    /* Before/After Dual Image Layering */
+    .img-before {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 1;
+      transform: scale(1);
+      transition: transform 0.6s var(--ease-out);
+    }
+    .img-after {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 2;
+      opacity: 1;
+      transform: scale(1);
+      transition: opacity 0.45s ease, transform 0.6s var(--ease-out);
+    }
+
+    /* On Hover & Active Mobile Tap: reveal Before image */
+    .gallery-item.has-before:hover .img-after,
+    .gallery-item.has-before.show-before .img-after {
+      opacity: 0;
+    }
+    .gallery-item.has-before:hover .img-before,
+    .gallery-item.has-before.show-before .img-before {
+      transform: scale(1.04);
+    }
+    .gallery-item:not(.has-before):hover .img-after {
+      transform: scale(1.04);
+    }
+
+    /* Interactive Before/After Badge Pill */
+    .ba-pill {
+      position: absolute;
+      top: 0.85rem;
+      left: 0.85rem;
+      z-index: 4;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.28rem 0.7rem;
+      border-radius: 2rem;
+      background: hsl(25 8% 18% / 0.72);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      color: var(--white);
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border: 1px solid hsl(38 30% 96% / 0.22);
+      pointer-events: none;
+      transition: all 0.3s ease;
+      white-space: nowrap;
+    }
+    .ba-pill-state { transition: color 0.3s ease; white-space: nowrap; }
+    .ba-after { color: #E2C799; font-weight: 700; }
+    .ba-before { color: var(--white); display: none; }
+    .ba-pill-hint {
+      font-size: 0.6rem;
+      opacity: 0.75;
+      font-weight: 400;
+      letter-spacing: 0.05em;
+      padding-left: 0.25rem;
+      border-left: 1px solid hsl(38 30% 96% / 0.2);
+      white-space: nowrap;
+    }
+
+    /* Hover Badge Transformation */
+    .gallery-item.has-before:hover .ba-pill,
+    .gallery-item.has-before.show-before .ba-pill {
+      background: hsl(16 48% 38% / 0.92);
+      border-color: hsl(41 52% 82% / 0.6);
+      box-shadow: 0 4px 14px hsl(16 48% 38% / 0.3);
+    }
+    .gallery-item.has-before:hover .ba-after,
+    .gallery-item.has-before.show-before .ba-after {
+      display: none;
+    }
+    .gallery-item.has-before:hover .ba-before,
+    .gallery-item.has-before.show-before .ba-before {
+      display: inline;
+      color: #FFF;
+      font-weight: 700;
+    }
+    .gallery-item.has-before:hover .ba-pill-hint,
+    .gallery-item.has-before.show-before .ba-pill-hint {
+      display: none;
+    }
+
+    /* Single image badge (e.g. Studio Space) */
+    .single-pill {
+      position: absolute;
+      top: 0.85rem;
+      left: 0.85rem;
+      z-index: 4;
+      padding: 0.25rem 0.65rem;
+      border-radius: 2rem;
+      background: hsl(25 8% 18% / 0.65);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      color: hsl(38 30% 96% / 0.9);
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border: 1px solid hsl(38 30% 96% / 0.18);
+      pointer-events: none;
+      white-space: nowrap;
+    }
+
+    .gallery-overlay {
+      position: absolute;
+      inset: 0;
+      background: hsl(25 8% 8% / 0);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.3s;
+      pointer-events: none;
+      z-index: 3;
+    }
+    .gallery-item:hover .gallery-overlay { background: hsl(25 8% 8% / 0.22); }
+    .gallery-overlay svg {
+      opacity: 0;
+      color: var(--white);
+      transform: scale(0.7);
+      transition: opacity 0.3s, transform 0.3s var(--ease-out);
+    }
+    .gallery-item:hover .gallery-overlay svg { opacity: 1; transform: scale(1); }
+
+    .gallery-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0; right: 0;
+      padding: 1.25rem 0.85rem 0.75rem;
+      background: linear-gradient(transparent, hsl(25 8% 8% / 0.82));
+      color: var(--white);
+      font-size: 0.75rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      opacity: 0;
+      transition: opacity 0.3s;
+      pointer-events: none;
+      z-index: 3;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      overflow: hidden;
+    }
+    .gallery-item:hover .gallery-caption { opacity: 1; }
+    .caption-title { font-weight: 600; color: #FFF; font-size: 0.78rem; line-height: 1.25; }
+    .caption-sub { font-size: 0.65rem; color: #E2C799; text-transform: none; letter-spacing: 0.02em; }
+
+    /* Mobile Gallery Optimizations — prevents badges, hints, and captions from overlapping */
+    @media (max-width: 640px) {
+      .gallery-item {
+        border-radius: 0.5rem;
+      }
+      .ba-pill {
+        top: 0.45rem;
+        left: 0.45rem;
+        padding: 0.22rem 0.5rem;
+        font-size: 0.6rem;
+        gap: 0.2rem;
+      }
+      .ba-pill-hint {
+        display: none !important; /* Hide hint on narrow mobile cards to prevent awkward text wrapping */
+      }
+      .single-pill {
+        top: 0.45rem;
+        left: 0.45rem;
+        padding: 0.22rem 0.5rem;
+        font-size: 0.6rem;
+      }
+      .gallery-caption {
+        padding: 1.2rem 0.5rem 0.45rem;
+        gap: 2px;
+      }
+      .caption-title {
+        font-size: 0.68rem;
+        line-height: 1.2;
+      }
+      .caption-sub {
+        font-size: 0.58rem;
+        line-height: 1.1;
+      }
+    }
+
+    /* Lightbox dialog */
+    #lightbox {
+      padding: 0;
+      border: none;
+      background: transparent;
+      max-width: 100vw;
+      max-height: 100dvh;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transform: scale(0.94);
+      transition:
+        opacity 0.35s ease-out,
+        transform 0.35s var(--ease-out),
+        display 0.35s allow-discrete,
+        overlay 0.35s allow-discrete;
+      transition-behavior: allow-discrete;
+    }
+    #lightbox[open] { opacity: 1; transform: scale(1); }
+    @starting-style { #lightbox[open] { opacity: 0; transform: scale(0.94); } }
+    #lightbox::backdrop {
+      background: hsl(25 8% 5% / 0);
+      transition:
+        display 0.35s allow-discrete,
+        overlay 0.35s allow-discrete,
+        background-color 0.35s ease-out;
+      transition-behavior: allow-discrete;
+    }
+    #lightbox[open]::backdrop { background: hsl(25 8% 5% / 0.92); }
+    @starting-style { #lightbox[open]::backdrop { background: hsl(25 8% 5% / 0); } }
+    @media (prefers-reduced-motion: reduce) { #lightbox { transform: none; transition-duration: 0.1s; } }
+
+    .lightbox-inner {
+      position: relative;
+      max-width: min(94vw, 820px);
+      max-height: 94dvh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-sizing: border-box;
+      padding-top: 2.25rem; /* room for close button */
+    }
+    .lightbox-img-wrap {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      max-width: 100%;
+      min-height: 0;
+      flex-shrink: 1;
+    }
+    #lightbox-img {
+      max-width: 100%;
+      max-height: clamp(240px, 58dvh, 70dvh);
+      border-radius: 0.75rem;
+      object-fit: contain;
+      box-shadow: 0 24px 80px hsl(25 8% 5% / 0.7);
+      transition: opacity 0.3s ease;
+      cursor: pointer;
+    }
+    /* Lightbox Before / After Switcher */
+    .lb-ba-bar {
+      margin-top: 0.75rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      background: hsl(25 8% 18% / 0.9);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      padding: 0.25rem 0.35rem;
+      border-radius: 2rem;
+      border: 1px solid hsl(38 30% 96% / 0.2);
+      flex-shrink: 0;
+      z-index: 2;
+    }
+    .lb-ba-toggle-btn {
+      padding: 0.38rem 0.95rem;
+      border-radius: 1.5rem;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: hsl(38 30% 96% / 0.85);
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      touch-action: manipulation;
+    }
+    .lb-ba-toggle-btn:hover { color: var(--white); }
+    .lb-ba-toggle-btn.active {
+      background: var(--accent);
+      color: var(--white);
+      box-shadow: 0 2px 8px hsl(16 48% 38% / 0.4);
+    }
+    .lightbox-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      background: hsl(25 8% 18% / 0.55);
+      border: 1px solid hsl(38 30% 96% / 0.3);
+      color: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(8px);
+      transition: background 0.2s;
+      font-size: 1.25rem;
+      cursor: pointer;
+      z-index: 5;
+    }
+    .lightbox-btn:hover { background: hsl(25 8% 18% / 0.8); }
+    #lb-prev { left: -54px; }
+    #lb-next { right: -54px; }
+    @media (max-width: 760px) {
+      #lb-prev { left: 0.4rem; width: 38px; height: 38px; }
+      #lb-next { right: 0.4rem; width: 38px; height: 38px; }
+    }
+    #lb-close {
+      position: absolute;
+      top: 0.2rem;
+      right: 0.2rem;
+      width: 38px; height: 38px;
+      border-radius: 50%;
+      background: hsl(38 30% 96% / 0.18);
+      border: 1px solid hsl(38 30% 96% / 0.28);
+      color: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(8px);
+      transition: background 0.2s;
+      font-size: 1.15rem;
+      cursor: pointer;
+      z-index: 10;
+    }
+    #lb-close:hover { background: hsl(38 30% 96% / 0.32); }
+
+    /* Lightbox Caption: in-flow flex layout — NEVER overlaps with switcher buttons! */
+    #lb-caption {
+      position: static;
+      margin: 0.55rem 0 0;
+      text-align: center;
+      color: hsl(38 30% 92% / 0.9);
+      font-size: 0.78rem;
+      line-height: 1.35;
+      letter-spacing: 0.03em;
+      max-width: min(90vw, 540px);
+      flex-shrink: 0;
+      box-sizing: border-box;
+      padding: 0 0.5rem;
+    }
+    .lb-cap-title {
+      font-weight: 600;
+      color: var(--white);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .lb-cap-state {
+      color: #E2C799;
+      font-weight: 600;
+    }
+    .lb-cap-hint {
+      display: block;
+      color: hsl(38 30% 80% / 0.75);
+      font-size: 0.68rem;
+      letter-spacing: 0.02em;
+      margin-top: 0.15rem;
+    }
+
+    /* ============================================================
+       REVIEWS / TESTIMONIALS
+       ============================================================ */
+    #reviews { padding: var(--section-pad); background: var(--cream); }
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.25rem;
+      max-width: 1050px;
+      margin: 0 auto;
+    }
+    .review-card {
+      position: relative;
+      background: var(--white);
+      border-radius: var(--card-radius);
+      padding: 1.75rem;
+      border: 1px solid var(--cream-mid);
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      overflow: hidden;
+      opacity: 0;
+      transform: translateY(22px);
+      transition:
+        opacity 0.6s var(--ease-out),
+        transform 0.6s var(--ease-out),
+        box-shadow 0.25s var(--ease-out),
+        border-color 0.25s;
+    }
+    .review-card.visible { opacity: 1; transform: translateY(0); }
+    /* Stagger delay applies only until the card has entered */
+    .review-card:not(.visible) { transition-delay: calc(var(--stagger, 0) * 90ms); }
+    .review-card:hover {
+      box-shadow: 0 8px 32px hsl(25 8% 18% / 0.08);
+      transform: translateY(-3px);
+      border-color: hsl(41 52% 82% / 0.9);
+    }
+    /* Oversized ghost quotation mark */
+    .review-card::before {
+      content: '\201C';
+      position: absolute;
+      top: 0.1rem;
+      right: 1rem;
+      font-family: var(--font-serif);
+      font-size: 5rem;
+      line-height: 1;
+      color: hsl(41 52% 82% / 0.5);
+      pointer-events: none;
+    }
+    .stars { color: var(--champagne-deep); font-size: 0.9rem; letter-spacing: 0.05em; }
+    .review-text { font-family: var(--font-serif); font-size: 1.08rem; font-style: italic; font-weight: 300; color: var(--charcoal); line-height: 1.6; flex-grow: 1; }
+    .reviewer { display: flex; align-items: center; gap: 0.75rem; }
+    .reviewer-avatar {
+      width: 38px; height: 38px;
+      border-radius: 50%;
+      background: var(--accent-light);
+      color: var(--accent);
+      font-family: var(--font-serif);
+      font-size: 1.1rem;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      box-shadow: 0 0 0 2px var(--white), 0 0 0 3.5px var(--champagne);
+    }
+    .reviewer-name { font-weight: 600; font-size: 0.88rem; color: var(--charcoal); }
+    .reviewer-source { font-size: 0.74rem; color: var(--taupe); }
+
+    /* ============================================================
+       POLICIES & FAQ — accordion (<details>/<summary>)
+       ============================================================ */
+    #policies { padding: var(--section-pad); background: var(--white); }
+    #faq { padding: var(--section-pad); background: var(--cream); }
+    .accordion-wrap { max-width: 760px; margin: 0 auto; }
+
+    details.accordion-item { border-bottom: 1px solid var(--cream-mid); overflow: hidden; }
+    details.accordion-item:first-of-type { border-top: 1px solid var(--cream-mid); }
+    details.accordion-item summary {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.2rem 0;
+      cursor: pointer;
+      list-style: none;
+      font-family: var(--font-serif);
+      font-size: 1.1rem;
+      font-weight: 400;
+      color: var(--charcoal);
+      transition: color 0.2s;
+      user-select: none;
+      gap: 1rem;
+    }
+    details.accordion-item summary::-webkit-details-marker { display: none; }
+    details.accordion-item summary:hover { color: var(--accent); }
+    .accordion-icon {
+      width: 20px; height: 20px;
+      flex-shrink: 0;
+      color: var(--accent);
+      transition: transform 0.3s var(--ease-out);
+    }
+    details[open] .accordion-icon { transform: rotate(45deg); }
+    .accordion-body { padding: 0 0 1.5rem; color: var(--taupe-dark); font-size: 0.95rem; font-weight: 300; line-height: 1.8; }
+    .accordion-body ul { padding-left: 1.25rem; }
+    .accordion-body ul li { list-style: disc; margin-bottom: 0.4rem; }
+    .accordion-body p + p { margin-top: 0.75rem; }
+
+    /* ============================================================
+       LOCATION & HOURS
+       ============================================================ */
+    #location { padding: var(--section-pad); background: var(--white); }
+    .location-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      max-width: 1050px;
+      margin: 0 auto;
+      align-items: start;
+    }
+    @media (max-width: 768px) { .location-grid { grid-template-columns: 1fr; } }
+
+    .map-placeholder {
+      background: var(--cream-mid);
+      border-radius: var(--card-radius);
+      overflow: hidden;
+      aspect-ratio: 4/3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid hsl(30 12% 55% / 0.25);
+      position: relative;
+    }
+    .map-placeholder iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+    .map-placeholder-msg { text-align: center; color: var(--taupe); font-size: 0.88rem; padding: 1.5rem; }
+    .map-placeholder-msg strong { display: block; color: var(--taupe-dark); margin-bottom: 0.35rem; }
+
+    .hours-card .eyebrow { margin-bottom: 0.6rem; }
+    .hours-card h2 { margin-bottom: 0.5rem; }
+    .studio-address { display: flex; align-items: flex-start; gap: 0.5rem; color: var(--taupe-dark); font-size: 0.95rem; margin-bottom: 1.75rem; }
+    .studio-address svg { flex-shrink: 0; margin-top: 3px; color: var(--accent); }
+    .hours-table { width: 100%; border-collapse: collapse; margin-bottom: 1.5rem; }
+    .hours-table tr { border-bottom: 1px solid var(--cream-mid); }
+    .hours-table td { padding: 0.6rem 0; font-size: 0.92rem; color: var(--taupe-dark); }
+    .hours-table td:first-child { font-weight: 500; color: var(--charcoal); }
+    .hours-table td:last-child { text-align: right; }
+    .hours-table tr.closed td { color: var(--taupe); font-style: italic; }
+    .hours-table tr.today td { color: var(--accent); font-weight: 600; }
+    .parking-note {
+      background: var(--cream);
+      border-radius: 0.75rem;
+      padding: 0.9rem 1rem;
+      font-size: 0.85rem;
+      color: var(--taupe-dark);
+      display: flex;
+      gap: 0.6rem;
+      align-items: flex-start;
+    }
+    .parking-note svg { flex-shrink: 0; margin-top: 2px; color: var(--accent); }
+
+    /* ============================================================
+       CONTACT / FOOTER CTA
+       ============================================================ */
+    #contact { padding: var(--section-pad); background: var(--charcoal); color: var(--cream); }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      max-width: 1050px;
+      margin: 0 auto;
+    }
+    @media (max-width: 768px) { .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; } }
+    #contact .eyebrow { color: hsl(41 45% 76%); }
+    #contact h2 { color: var(--white); margin-bottom: 1rem; }
+    #contact p { color: hsl(38 20% 72%); font-weight: 300; margin-bottom: 2rem; }
+
+    .contact-details { display: flex; flex-direction: column; gap: 0.85rem; margin-bottom: 2rem; }
+    .contact-link { display: flex; align-items: center; gap: 0.7rem; color: hsl(38 20% 78%); font-size: 0.95rem; transition: color 0.2s; }
+    .contact-link svg { color: var(--champagne); flex-shrink: 0; }
+    .contact-link:hover { color: var(--white); }
+    .social-row { display: flex; gap: 0.75rem; margin-top: 1.5rem; }
+    .social-btn {
+      width: 42px; height: 42px;
+      border-radius: 50%;
+      background: hsl(38 20% 78% / 0.12);
+      border: 1px solid hsl(38 20% 78% / 0.2);
+      color: hsl(38 20% 78%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.05rem;
+      transition: background 0.2s, color 0.2s, border-color 0.2s, transform 0.2s var(--ease-out);
+    }
+    .social-btn:hover { background: var(--accent); border-color: var(--accent); color: var(--white); transform: translateY(-2px); }
+
+    .book-cta-band {
+      margin-top: 3rem;
+      padding-top: 3rem;
+      border-top: 1px solid hsl(38 20% 78% / 0.15);
+      text-align: center;
+      grid-column: 1 / -1;
+    }
+    .book-cta-band p { color: hsl(38 20% 65%); font-size: 0.9rem; margin-bottom: 1.25rem; }
+
+    /* ============================================================
+       FOOTER
+       ============================================================ */
+    footer {
+      background: hsl(25 8% 12%);
+      padding: 1.75rem clamp(1.25rem, 5vw, 3.5rem);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      color: hsl(38 20% 50%);
+      font-size: 0.8rem;
+    }
+    footer a { color: inherit; transition: color 0.2s; }
+    footer a:hover { color: var(--cream); }
+    .footer-nav { display: flex; flex-wrap: wrap; gap: 1.5rem; }
+    .footer-social { display: flex; gap: 0.6rem; }
+    .footer-social .social-btn {
+      width: 34px;
+      height: 34px;
+      font-size: 0.9rem;
+      background: hsl(38 20% 78% / 0.08);
+      border-color: hsl(38 20% 78% / 0.16);
+      color: hsl(38 20% 60%);
+    }
+    .footer-social .social-btn:hover {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: var(--white);
+    }
+
+    /* ============================================================
+       SCROLL-REVEAL UTILITY
+       ============================================================ */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out); }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; transition: none !important; }
+      .review-card { opacity: 1 !important; transform: none !important; transition: none !important; }
+      .btn-primary::after { display: none; }
+      .hero-content, .hero-chip { animation: none; }
+      html { scroll-behavior: auto; }
+    }
+
+    /* ============================================================
+       MISC
+       ============================================================ */
+    .container { max-width: 1050px; margin: 0 auto; }
+
+    /* Skip link (accessibility) */
+    .skip-link { position: absolute; top: -999px; left: 0; padding: 0.5rem 1rem; background: var(--accent); color: var(--white); font-size: 0.85rem; border-radius: 0 0 0.5rem 0; z-index: 9999; }
+    .skip-link:focus { top: 0; }
+  </style>
+</head>
+<body>
+
+<!-- Accessibility: skip to main content -->
+<a class="skip-link" href="#main-content">Skip to main content</a>
+
+<!-- ============================================================
+     NAVIGATION — sticky glassmorphism bar
+     ============================================================ -->
+<nav id="site-nav" role="navigation" aria-label="Main navigation">
+  <a href="#home" class="nav-logo" id="nav-logo-link" aria-label="NA Beauty Bar"><img src="NaLogo.png" alt="NA Beauty Bar" class="nav-logo-img" /></a>
+
+  <button id="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Open navigation menu">
+    <span aria-hidden="true"></span>
+    <span aria-hidden="true"></span>
+    <span aria-hidden="true"></span>
+  </button>
+
+  <ul class="nav-links" id="nav-menu" role="list">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a id="nav-book-btn" class="btn btn-primary" href="#BOOKING_LINK">Book Now</a></li>
+  </ul>
+</nav>
+
+<!-- ============================================================
+     MAIN CONTENT
+     ============================================================ -->
+<main id="main-content">
+
+  <!-- ============================================================
+       1. HERO — full-bleed photo, tagline, CTAs
+       ============================================================ -->
+  <section id="home" aria-label="Welcome to the studio">
+    <div class="hero-bg" aria-hidden="true">
+      <!-- To change the hero photo: replace the src below with your image path or URL -->
+      <img
+        src="lash_studio_hero_1786049868666.jpg"
+        alt=""
+        fetchpriority="high"
+        id="hero-img"
+      />
+    </div>
+    <div class="hero-content">
+      <p class="eyebrow" id="hero-eyebrow"></p>
+      <h1 id="hero-heading"></h1>
+      <div class="hero-rule" aria-hidden="true"></div>
+      <p class="hero-tagline" id="hero-tagline"></p>
+      <div class="hero-ctas">
+        <a id="hero-book-btn" class="btn btn-primary" href="#BOOKING_LINK">Book an Appointment</a>
+        <a class="btn btn-secondary" href="#services">View Services</a>
+      </div>
+    </div>
+    <div class="hero-chip">
+      <span class="hero-chip-stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+      <span><strong>5.0</strong> &middot; Fresha Reviews</span>
+    </div>
+    <div class="hero-scroll-cue" aria-hidden="true">Scroll</div>
+  </section>
+
+  <!-- ============================================================
+       2. ABOUT — studio story & trust badges
+       ============================================================ -->
+  <section id="about" aria-labelledby="about-heading">
+    <svg class="curve" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M0,34 C260,62 520,6 780,14 C1060,23 1260,50 1440,28 L1440,60 L0,60 Z" style="fill:#F8F6F2"/></svg>
+    <span class="watermark wm-about" aria-hidden="true">beauty</span>
+
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <p class="eyebrow">Our Story</p>
+        <h2 id="about-heading"></h2>
+        <div id="about-body"></div>
+        <div class="trust-badges" id="trust-badges"></div>
+      </div>
+      <div class="about-image-wrap reveal">
+        <!-- Replace src with an owner/studio photo -->
+        <img
+          src="gallery_brow_shape_1786049943583.jpg"
+          alt="[OWNER NAME], licensed lash artist, at work in the studio"
+          loading="lazy"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       3. SERVICES — customizable lash & brow treatments
+       ============================================================ -->
+  <section id="services" class="glow" aria-labelledby="services-heading">
+    <svg class="curve" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M0,34 C260,62 520,6 780,14 C1060,23 1260,50 1440,28 L1440,60 L0,60 Z" style="fill:#ffffff"/></svg>
+    <span class="watermark wm-services" aria-hidden="true">artistry</span>
+
+    <div class="services-wrapper">
+      <div class="section-intro text-center reveal">
+        <p class="eyebrow">What We Offer</p>
+        <h2 id="services-heading">Our Services</h2>
+        <p>All services are performed in a pristine, serene boutique studio environment. Each set is individually mapped to enhance your natural beauty. Select a treatment below and book directly online.</p>
+      </div>
+      <div id="services-container" class="reveal"></div>
+      <div class="services-book-cta reveal">
+        <a class="btn btn-primary" href="#BOOKING_LINK">Reserve Your Service on Fresha &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       4. GALLERY — mixed-size mosaic, lightbox on click
+       To swap photos: update GALLERY_IMAGES array in the JS below
+       ============================================================ -->
+  <section id="gallery" aria-labelledby="gallery-heading">
+    <svg class="curve" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M0,34 C260,62 520,6 780,14 C1060,23 1260,50 1440,28 L1440,60 L0,60 Z" style="fill:#F8F6F2"/></svg>
+    <span class="watermark wm-gallery" aria-hidden="true">lashes</span>
+
+    <div class="section-intro text-center reveal">
+      <p class="eyebrow">Portfolio &amp; Transformations</p>
+      <h2 id="gallery-heading">Before &amp; After Artistry</h2>
+      <p>Hover over any service photo (or tap on phone) to reveal the client's natural before look. Click any image to view in high resolution.</p>
+    </div>
+    <div class="gallery-grid reveal" id="gallery-grid" role="list"></div>
+  </section>
+
+  <!-- Lightbox dialog — keyboard + click navigable, with Before/After Switcher -->
+  <dialog id="lightbox" aria-label="Image lightbox" aria-modal="true">
+    <div class="lightbox-inner">
+      <button id="lb-close" aria-label="Close lightbox">&#x2715;</button>
+      <button id="lb-prev" class="lightbox-btn" aria-label="Previous image">&#8592;</button>
+      <div class="lightbox-img-wrap">
+        <img id="lightbox-img" src="" alt="" />
+      </div>
+      <button id="lb-next" class="lightbox-btn" aria-label="Next image">&#8594;</button>
+      
+      <!-- Interactive Before / After view toggle in lightbox -->
+      <div class="lb-ba-bar" id="lb-ba-bar" role="group" aria-label="Transformation view options">
+        <button type="button" class="lb-ba-toggle-btn" id="lb-btn-before">Before</button>
+        <button type="button" class="lb-ba-toggle-btn active" id="lb-btn-after">After (Result)</button>
+      </div>
+
+      <p id="lb-caption" aria-live="polite"></p>
+    </div>
+  </dialog>
+
+  <!-- ============================================================
+       5. REVIEWS — verified Fresha reviews
+       ============================================================ -->
+  <section id="reviews" class="glow" aria-labelledby="reviews-heading">
+    <svg class="curve" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M0,34 C260,62 520,6 780,14 C1060,23 1260,50 1440,28 L1440,60 L0,60 Z" style="fill:#ffffff"/></svg>
+
+    <div class="section-intro text-center reveal">
+      <p class="eyebrow">Client Praise</p>
+      <h2 id="reviews-heading">What Our Clients Say</h2>
+      <p>Rated <strong>5.0 ★</strong> across 330+ verified client bookings on Fresha — hear why clients across Morrisville trust NA Beauty Bar.</p>
+      <div style="margin-top: 1rem;">
+        <a href="https://www.fresha.com/a/nabeautybar-morrisville-229-plaza-boulevard-vc5dx7jw?pId=368097&reviews=true" target="_blank" rel="noopener" class="fresha-badge-pill" aria-label="View all verified Fresha reviews">
+          <span style="color: #C59B63; letter-spacing: 2px;">★★★★★</span>
+          <strong>5.0 on Fresha</strong>
+          <span style="color: var(--taupe-dark); font-size: 0.76rem;">(330+ Verified Reviews) &#x2197;</span>
+        </a>
+      </div>
+    </div>
+    <div class="reviews-grid" id="reviews-grid"></div>
+    <div class="text-center reveal" style="margin-top: 2.8rem;">
+      <a class="btn btn-outline" href="https://www.fresha.com/a/nabeautybar-morrisville-229-plaza-boulevard-vc5dx7jw?pId=368097&reviews=true" target="_blank" rel="noopener">
+        Read All 330+ Reviews on Fresha &rarr;
+      </a>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       6. POLICIES & AFTERCARE — collapsible accordion
+       Edit text in the JS POLICIES array
+       ============================================================ -->
+  <section id="policies" aria-labelledby="policies-heading">
+    <svg class="curve" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M0,34 C260,62 520,6 780,14 C1060,23 1260,50 1440,28 L1440,60 L0,60 Z" style="fill:#F8F6F2"/></svg>
+
+    <div class="accordion-wrap">
+      <div class="section-intro text-center reveal">
+        <p class="eyebrow">Good to Know</p>
+        <h2 id="policies-heading">Policies &amp; Aftercare</h2>
+        <p>Please review our policies before your visit. Proper aftercare ensures the longest-lasting results.</p>
+      </div>
+      <div id="policies-container" class="reveal"></div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       7. FAQ — collapsible accordion
+       Edit questions in JS FAQ array
+       ============================================================ -->
+  <section id="faq" aria-labelledby="faq-heading">
+    <svg class="curve" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M0,34 C260,62 520,6 780,14 C1060,23 1260,50 1440,28 L1440,60 L0,60 Z" style="fill:#ffffff"/></svg>
+
+    <div class="accordion-wrap container">
+      <div class="section-intro text-center reveal">
+        <p class="eyebrow">Questions?</p>
+        <h2 id="faq-heading">Frequently Asked Questions</h2>
+      </div>
+      <div id="faq-container" class="reveal"></div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       8. LOCATION & HOURS — edit address, hours, & map embed in JS
+       ============================================================ -->
+  <section id="location" aria-labelledby="location-heading">
+    <svg class="curve" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M0,34 C260,62 520,6 780,14 C1060,23 1260,50 1440,28 L1440,60 L0,60 Z" style="fill:#F8F6F2"/></svg>
+
+    <div class="location-grid">
+      <!-- GOOGLE MAP EMBED:
+           1. Go to maps.google.com
+           2. Search your address
+           3. Click Share → Embed a map → Copy HTML
+           4. Replace the <div class="map-placeholder"> below with the <iframe> code
+           (Keep it wrapped in a div with the same aspect-ratio styling if desired) -->
+      <div class="map-placeholder">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d556.8914012157542!2d-74.80201981410238!3d40.206337976492414!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c15771250045ef%3A0xda442e4b60cd64aa!2snabeautybar!5e0!3m2!1sen!2sus!4v1787595537487!5m2!1sen!2sus"
+          style="border:0;"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="strict-origin-when-cross-origin"
+          title="Map showing NA Beauty Bar, 229 Plaza Blvd Unit 26, Morrisville, PA"
+        ></iframe>
+      </div>
+
+      <div class="hours-card reveal">
+        <p class="eyebrow">Find Us</p>
+        <h2 id="location-heading">Location &amp; Hours</h2>
+        <div class="studio-address">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"/></svg>
+          <span id="studio-address-text"></span>
+        </div>
+        <table class="hours-table" aria-label="Studio hours" id="hours-table"></table>
+        <div class="parking-note">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M11.25 11.25l.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z"/></svg>
+          <span id="parking-note-text"></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       9. CONTACT & BOOK — direct contact & booking
+       ============================================================ -->
+  <section id="contact" aria-labelledby="contact-heading">
+    <svg class="curve" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M0,34 C260,62 520,6 780,14 C1060,23 1260,50 1440,28 L1440,60 L0,60 Z" style="fill:#ffffff"/></svg>
+    <span class="watermark wm-contact" aria-hidden="true">glow</span>
+
+    <div class="contact-grid">
+
+      <!-- Left: info + book button -->
+      <div class="reveal">
+        <p class="eyebrow">Get in Touch</p>
+        <h2 id="contact-heading">Ready for Your Glow-Up?</h2>
+        <p>Book your appointment online anytime, or reach out with questions. We'd love to hear from you.</p>
+
+        <!--
+          BOOKING BUTTON — replace href with your booking platform URL:
+          Vagaro:   https://www.vagaro.com/your-studio-slug
+          Fresha:   https://www.fresha.com/book-now/...
+          Square:   https://squareup.com/appointments/book/...
+          Calendly: https://calendly.com/your-name
+          Booksy:   https://booksy.com/en-us/...
+        -->
+        <a id="footer-book-btn" class="btn btn-primary" href="#BOOKING_LINK">
+          Book an Appointment
+        </a>
+      </div>
+
+      <!-- Right: direct contact details -->
+      <div class="reveal">
+        <div class="contact-details" id="contact-details"></div>
+        <div class="social-row" id="social-row"></div>
+      </div>
+
+      <!-- Full-width booking band -->
+      <div class="book-cta-band reveal">
+        <p>Online booking is available 24/7. Appointments fill quickly — secure your spot today.</p>
+        <a class="btn btn-primary" href="#BOOKING_LINK" style="font-size:1rem;padding:0.9rem 2.5rem;">
+          Book Now &rarr;
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer>
+  <div class="footer-brand">
+    <a href="#home" aria-label="NA Beauty Bar Home"><img src="NaLogo.png" alt="NA Beauty Bar" class="footer-logo-img" /></a>
+  </div>
+  <span id="footer-copyright"></span>
+  <nav class="footer-nav" aria-label="Footer navigation">
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#policies">Policies</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <div class="footer-social" id="footer-social"></div>
+</footer>
+
+
+<!-- ============================================================
+  ╔══════════════════════════════════════════════════════════════╗
+  ║              ✏️  OWNER EDIT ZONE  ✏️                        ║
+  ║  Everything below is what you edit.                          ║
+  ║  Change names, prices, hours, text — NOT the structure.      ║
+  ╚══════════════════════════════════════════════════════════════╝
+  ============================================================ -->
+<script>
+'use strict';
+
+/* ================================================================
+   STEP 1 — STUDIO IDENTITY
+   Change these first. They appear everywhere on the page.
+   ================================================================ */
+const STUDIO_NAME    = 'NA Beauty Bar';
+const STUDIO_TAGLINE = 'Lash extension & brow bar in Morrisville, PA';
+const STUDIO_SUBTITLE= 'Where precision meets artistry.';
+const CITY_STATE     = 'Morrisville, PA';
+
+/* ================================================================
+   STEP 2 — CONTACT & BOOKING INFORMATION
+   ================================================================ */
+const CONTACT = {
+  phone:      '(267) 799-6919 (Call) / (267) 223-5458 (Text)',
+  email:      'info@nabeautybar.com',
+  instagram:  '@nabeautybar',
+  facebook:   'nabeautybar',
+
+  /* YOUR BOOKING PLATFORM URL */
+  bookingUrl: 'https://www.fresha.com/a/nabeautybar-morrisville-229-plaza-boulevard-vc5dx7jw/booking?menu=true&pId=368097&dppub=true',
+  reviewsUrl: 'https://www.fresha.com/a/nabeautybar-morrisville-229-plaza-boulevard-vc5dx7jw?pId=368097&reviews=true',
+};
+
+/* ================================================================
+   STEP 3 — ADDRESS & HOURS
+   ================================================================ */
+const ADDRESS = '229 Plaza Blvd, Unit 26, Morrisville, PA 19067';
+
+const PARKING_NOTE = 'Located inside the Planet Fitness Plaza, approx. 10 minutes from Oxford Valley / Sesame Place.';
+
+/* Use 'closed' (lowercase) for days the studio is not open */
+const HOURS = [
+  { day: 'Monday',    hours: 'closed' },
+  { day: 'Tuesday',   hours: 'closed' },
+  { day: 'Wednesday', hours: '11:00 AM – 6:00 PM' },
+  { day: 'Thursday',  hours: '11:00 AM – 6:00 PM' },
+  { day: 'Friday',    hours: '11:00 AM – 6:00 PM' },
+  { day: 'Saturday',  hours: '11:00 AM – 6:00 PM' },
+  { day: 'Sunday',    hours: 'closed' },
+];
+
+/* ================================================================
+   STEP 4 — ABOUT / STUDIO STORY
+   ================================================================ */
+const ABOUT_HEADING = "Artistry You Can Trust,\nResults You'll Love.";
+
+const ABOUT_PARAGRAPHS = [
+  `NA Beauty Bar is a premier lash extension and brow bar located in Morrisville, PA. Dedicated to precision artistry and customized lash and brow transformations, we strive to make every client feel effortlessly beautiful.`,
+  `Every appointment is a one-on-one experience in a clean, high-end studio setting. We use only top-quality, professional products and take pride in tailoring each lash set and brow service to your natural beauty.`,
+];
+
+/* Trust badges — edit icon (emoji), label, and detail text */
+const TRUST_BADGES = [
+  { icon: '🎓', label: 'Licensed & Insured',      detail: 'Certified lash professional' },
+  { icon: '⭐', label: '5-Star Rated',             detail: 'Rated 5.0 on Fresha' },
+  { icon: '🌿', label: 'Hypoallergenic Products',  detail: 'Safe for sensitive eyes' },
+  { icon: '✨', label: '[X]+ Years Experience',    detail: 'Expert precision every time' },
+];
+
+/* ================================================================
+   STEP 5 — SERVICES & PRICING
+   Replace every [PRICE] with your real price, e.g. "$185"
+   Optional: add badge: 'Most Popular' (or similar) to any item.
+   ================================================================ */
+const SERVICES = [
+  {
+    category: 'Lash Extensions',
+    items: [
+      { name: 'Classic Full Set',      desc: 'One extension per natural lash. Clean, defined, natural-glam look.',                                     duration: '90–120 min', price: '[PRICE]' },
+      { name: 'Hybrid Full Set',       desc: 'Mix of classic and volume fans for a textured, wispy effect.',                                           duration: '120 min',    price: '[PRICE]', badge: 'Most Popular' },
+      { name: 'Volume Full Set',       desc: 'Handcrafted fans of 2–6 ultra-fine extensions for a fluffy, full look.',                                  duration: '150 min',    price: '[PRICE]' },
+      { name: 'Mega Volume Full Set',  desc: 'Maximum drama — ultra-dense fans for a bold, glamorous finish.',                                          duration: '180 min',    price: '[PRICE]' },
+    ],
+  },
+  {
+    category: 'Lash Fills',
+    items: [
+      { name: 'Classic Fill (2-week)',  desc: 'Recommended every 2–3 weeks to maintain your classic set.',           duration: '60 min',  price: '[PRICE]' },
+      { name: 'Hybrid Fill (2-week)',   desc: 'Refresh and maintain your hybrid lash set.',                          duration: '75 min',  price: '[PRICE]' },
+      { name: 'Volume Fill (2-week)',   desc: 'Keep your volume set looking full and fresh.',                        duration: '90 min',  price: '[PRICE]' },
+      { name: 'Mega Volume Fill',       desc: 'Recommended every 2 weeks for optimal retention.',                    duration: '105 min', price: '[PRICE]' },
+      { name: 'Lash Removal',          desc: 'Safe, professional removal of all lash extensions.',                  duration: '30 min',  price: '[PRICE]' },
+    ],
+  },
+  {
+    category: 'Lash Lift & Tint',
+    items: [
+      { name: 'Lash Lift',             desc: 'Semi-permanent curl that lasts 6–8 weeks. No extensions required.',                   duration: '60 min', price: '[PRICE]' },
+      { name: 'Lash Lift + Tint',      desc: 'Lift with a keratin tint for darker, more defined natural lashes.',                   duration: '75 min', price: '[PRICE]' },
+    ],
+  },
+  {
+    category: 'Brow Services',
+    items: [
+      { name: 'Brow Shaping',           desc: 'Custom mapping and shaping for your unique face structure.',                          duration: '30 min', price: '[PRICE]' },
+      { name: 'Brow Tint',              desc: 'Semi-permanent tint that adds depth and definition. Lasts 3–4 weeks.',                duration: '20 min', price: '[PRICE]' },
+      { name: 'Brow Shape + Tint',      desc: 'The perfect pair — shaping and tint in one appointment.',                             duration: '45 min', price: '[PRICE]' },
+      { name: 'Brow Lamination',        desc: 'A restructuring treatment that sets brow hairs in a brushed-up style for 6–8 weeks.',duration: '60 min', price: '[PRICE]' },
+      { name: 'Brow Lamination + Tint', desc: 'Lamination paired with a tint for full, defined, feathery brows.',                   duration: '75 min', price: '[PRICE]' },
+    ],
+  },
+];
+
+/* ================================================================
+   STEP 6 — GALLERY IMAGES
+   Replace each src with your own image file name or URL.
+   Keep the caption short — it shows in the lightbox.
+   ================================================================ */
+const GALLERY_IMAGES = [
+  {
+    src: 'gallery_classic_lashes_1786049883404.jpg',
+    beforeSrc: 'before_classic_lashes.jpg',
+    alt: 'Classic lash extensions — natural, wispy, defined',
+    caption: 'Classic Lash Extensions',
+    badge: 'Classic'
+  },
+  {
+    src: 'gallery_volume_lashes_1786049890499.jpg',
+    beforeSrc: 'before_volume_lashes.jpg',
+    alt: 'Volume lash extensions — full, fluffy, glamorous',
+    caption: 'Volume Lash Extensions',
+    badge: 'Volume'
+  },
+  {
+    src: 'gallery_brow_lamination_1786049897475.jpg',
+    beforeSrc: 'before_brow_lamination.jpg',
+    alt: 'Brow lamination — brushed up, full, natural',
+    caption: 'Brow Lamination',
+    badge: 'Brows'
+  },
+  {
+    src: 'gallery_lash_lift_1786049904325.jpg',
+    beforeSrc: 'before_lash_lift.jpg',
+    alt: 'Lash lift and tint — naturally curled, tinted',
+    caption: 'Lash Lift & Tint',
+    badge: 'Lash Lift'
+  },
+  {
+    src: 'gallery_hybrid_lashes_1786049911241.jpg',
+    beforeSrc: 'before_hybrid_lashes.jpg',
+    alt: 'Hybrid lash extensions — mix of classic and volume',
+    caption: 'Hybrid Lash Extensions',
+    badge: 'Hybrid'
+  },
+  {
+    src: 'gallery_brow_tint_1786049918346.jpg',
+    beforeSrc: 'before_brow_tint.jpg',
+    alt: 'Brow tint — defined, arched, sculpted brows',
+    caption: 'Brow Shape & Tint',
+    badge: 'Brows'
+  },
+  {
+    src: 'gallery_mega_volume_1786049936636.jpg',
+    beforeSrc: 'before_mega_volume.jpg',
+    alt: 'Mega volume lash extensions — bold, dramatic, full',
+    caption: 'Mega Volume Lashes',
+    badge: 'Mega Volume'
+  },
+  {
+    src: 'gallery_studio_ambiance_1786049952157.jpg',
+    alt: 'Warm, elegant boutique lash studio interior',
+    caption: 'Our Studio Space',
+    badge: 'Studio'
+  },
+  {
+    src: 'gallery_brow_shape_1786049943583.jpg',
+    alt: 'Lash artist applying professional brow treatment',
+    caption: 'In the Studio',
+    badge: 'Atelier'
+  },
+];
+
+/* ================================================================
+   STEP 7 — CLIENT REVIEWS
+   Paste in real Google / Yelp reviews here.
+   ================================================================ */
+const REVIEWS = [
+  {
+    stars:  5,
+    text:   'Always wonderful! Love the girls. I have been a client for over 5 years now.',
+    name:   'Johanna R.',
+    source: 'Fresha Review',
+  },
+  {
+    stars:  5,
+    text:   'I have a far commute but I wouldn\'t trade it... Nabeauty is top notch!',
+    name:   'Sarah B.',
+    source: 'Fresha Review',
+  },
+  {
+    stars:  5,
+    text:   'Wonderful expertise, and beautiful lashes! 100/10',
+    name:   'Autumn F.',
+    source: 'Fresha Review',
+  },
+  {
+    stars:  5,
+    text:   'Service always great!',
+    name:   'Jodi A.',
+    source: 'Fresha Review',
+  },
+];
+
+/* ================================================================
+   STEP 8 — POLICIES & AFTERCARE
+   Edit text. Keep HTML tags (like <strong>, <ul>, <li>) intact.
+   ================================================================ */
+const POLICIES = [
+  {
+    title: 'Booking & Cancellation Policy',
+    body: `
+      <p>All appointments require a credit card to reserve your spot. We kindly ask for <strong>at least 24 hours' notice</strong> if you need to cancel or reschedule.</p>
+      <p>Cancellations or rescheduling made within 24 hours will incur a fee of <strong>[CANCELLATION FEE]</strong>. No-shows will be charged <strong>50% of the service price</strong>.</p>
+      <p>We understand life happens — please reach out as early as possible and we will do our best to accommodate you.</p>
+    `,
+  },
+  {
+    title: 'Late Arrival Policy',
+    body: `
+      <p>Please arrive on time for your appointment. <strong>Grace period: [e.g. 10 minutes].</strong></p>
+      <p>Arriving late may result in a shortened service or rescheduling to avoid impacting the next client. Late arrival fees may apply.</p>
+    `,
+  },
+  {
+    title: 'New Client Prep — What to Do Before Your Appointment',
+    body: `
+      <ul>
+        <li>Arrive with <strong>no mascara or eye makeup</strong> on your lashes or lash line.</li>
+        <li>Remove contact lenses before your appointment (bring your case and solution).</li>
+        <li>Avoid caffeine 1–2 hours before — it can cause eye twitching!</li>
+        <li>Come with clean, oil-free lashes. Do not apply any lash serum 24 hours prior.</li>
+        <li>If you have had lash extensions elsewhere, let us know in your booking notes.</li>
+      </ul>
+    `,
+  },
+  {
+    title: 'Lash Extension Aftercare',
+    body: `
+      <ul>
+        <li><strong>First 24–48 hours:</strong> Avoid all water, steam, and humidity (no hot showers, swimming, saunas, or sweaty workouts).</li>
+        <li>Do <strong>not</strong> use oil-based products near the eye area — oil breaks down lash adhesive.</li>
+        <li>Gently brush lashes daily with the provided spoolie, always brushing from base to tip.</li>
+        <li>Sleep on your back or use a silk pillowcase to reduce friction.</li>
+        <li>Avoid rubbing or pulling your lashes.</li>
+        <li>Use only oil-free makeup remover around the eyes.</li>
+        <li>Book your fill every <strong>2–3 weeks</strong> for optimal retention.</li>
+      </ul>
+    `,
+  },
+  {
+    title: 'Lash Lift & Brow Lamination Aftercare',
+    body: `
+      <ul>
+        <li>Keep lashes/brows dry for <strong>24 hours</strong> after your appointment.</li>
+        <li>Avoid steam, saunas, swimming, and excessive sweating for 48 hours.</li>
+        <li>Do not use any perming, tinting, or chemical products near the area for 48 hours.</li>
+        <li>Apply the nourishing serum provided daily to maintain the treatment.</li>
+        <li>Results last approximately <strong>6–8 weeks</strong>.</li>
+      </ul>
+    `,
+  },
+];
+
+/* ================================================================
+   STEP 9 — FAQ
+   Add or remove question/answer pairs as needed.
+   ================================================================ */
+const FAQ = [
+  {
+    q: 'How long do lash extensions last?',
+    a: 'Lash extensions follow your natural lash growth cycle, shedding as your natural lashes shed. Most clients need a fill every 2–3 weeks. With proper aftercare, you can retain 50–70% of your extensions between fills.',
+  },
+  {
+    q: 'Do lash extensions damage natural lashes?',
+    a: 'When applied by a trained, certified artist using the correct weight of extension, lash extensions do not damage natural lashes. Damage typically occurs from improper application, picking/pulling extensions, or wearing extensions that are too heavy for your natural lashes. We carefully assess your lash health at every appointment.',
+  },
+  {
+    q: 'Does it hurt? What does it feel like?',
+    a: "Not at all — most clients find lash appointments incredibly relaxing and even fall asleep! You'll lie with your eyes closed while extensions are applied one by one to your natural lashes. There is no discomfort during application.",
+  },
+  {
+    q: 'How do I prepare for my first appointment?',
+    a: 'Arrive with clean, makeup-free eyes (no mascara, eye shadow, or eyeliner near the lash line). Remove contacts before your appointment. Avoid caffeine and plan to relax for the duration of your service.',
+  },
+  {
+    q: 'What is the difference between Classic, Hybrid, and Volume?',
+    a: "Classic lashes apply one extension per natural lash for a clean, defined look. Volume uses handmade fans of 2–6 ultra-fine lashes for a fuller, fluffier effect. Hybrid blends both techniques for a textured, wispy look that falls between the two — it's our most popular style!",
+  },
+  {
+    q: 'Do I need to do anything special after a brow lamination?',
+    a: 'Yes! For the first 24 hours, keep your brows dry and avoid steam, saunas, swimming, or sweating. After 48 hours, you can resume all normal activities. We recommend a daily nourishing brow serum to keep hairs healthy and conditioned.',
+  },
+];
+
+/* ================================================================
+   ——— DO NOT EDIT BELOW THIS LINE ———
+   The code below reads your data above and builds the page.
+   ================================================================ */
+
+/* Update document title */
+document.title = `${STUDIO_NAME} | Lash Extensions & Brow Studio in ${CITY_STATE}`;
+
+/* NAV LOGO — official logo image */
+document.getElementById('nav-logo-link').innerHTML = `
+  <img src="NaLogo.png" alt="${STUDIO_NAME}" class="nav-logo-img" />
+`;
+
+/* Update all booking links */
+document.querySelectorAll('[href="#BOOKING_LINK"]').forEach(el => { el.href = CONTACT.bookingUrl; });
+
+/* HERO */
+document.getElementById('hero-eyebrow').textContent = `Boutique Lash & Brow Bar · ${CITY_STATE}`;
+document.getElementById('hero-heading').innerHTML   = `${STUDIO_NAME}<br><em>${STUDIO_SUBTITLE}</em>`;
+document.getElementById('hero-tagline').textContent = STUDIO_TAGLINE;
+
+/* ABOUT */
+document.getElementById('about-heading').innerHTML = ABOUT_HEADING.replace('\n', '<br>');
+document.getElementById('about-body').innerHTML    = ABOUT_PARAGRAPHS.map(p => `<p>${p}</p>`).join('');
+document.getElementById('trust-badges').innerHTML  = TRUST_BADGES.map(b => `
+  <div class="badge">
+    <div class="badge-icon" aria-hidden="true">${b.icon}</div>
+    <div class="badge-text"><strong>${b.label}</strong><span>${b.detail}</span></div>
+  </div>
+`).join('');
+
+/* SERVICES (2-column layout: Service & Duration) */
+document.getElementById('services-container').innerHTML = SERVICES.map(cat => `
+  <div class="service-category">
+    <div class="category-header">
+      <h3>${cat.category}</h3>
+      <span class="category-pill">${cat.items.length} service${cat.items.length > 1 ? 's' : ''}</span>
+    </div>
+    <table class="service-table" aria-label="${cat.category} services">
+      <thead><tr><th scope="col">Service</th><th scope="col" style="text-align:right;">Duration</th></tr></thead>
+      <tbody>
+        ${cat.items.map(s => `
+          <tr class="service-row">
+            <td data-label="Service"><span class="service-name">${s.name}</span>${s.badge ? `<span class="service-badge">${s.badge}</span>` : ''}<span class="service-desc">${s.desc}</span></td>
+            <td class="service-duration" data-label="Duration">${s.duration}</td>
+          </tr>
+        `).join('')}
+      </tbody>
+    </table>
+  </div>
+`).join('');
+
+/* GALLERY (With Interactive Before/After Hover & Touch) */
+document.getElementById('gallery-grid').innerHTML = GALLERY_IMAGES.map((img, i) => {
+  const hasBefore = Boolean(img.beforeSrc);
+  return `
+    <div class="gallery-item ${hasBefore ? 'has-before' : ''}" role="listitem">
+      <button class="gallery-btn" aria-label="Open ${img.caption} ${hasBefore ? 'Before & After' : ''} in lightbox" data-index="${i}">
+        ${hasBefore ? `
+          <img class="img-before" src="${img.beforeSrc}" alt="Before: ${img.alt}" loading="lazy" />
+          <img class="img-after" src="${img.src}" alt="${img.alt}" loading="lazy" />
+          <div class="ba-pill" aria-hidden="true">
+            <span class="ba-pill-state ba-after">AFTER</span>
+            <span class="ba-pill-state ba-before">BEFORE</span>
+            <span class="ba-pill-hint">Hover for Before</span>
+          </div>
+        ` : `
+          <img class="img-after" src="${img.src}" alt="${img.alt}" loading="lazy" />
+          <div class="single-pill">${img.badge || 'Studio'}</div>
+        `}
+        <div class="gallery-overlay">
+          <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607ZM10.5 7.5v6m3-3h-6"/>
+          </svg>
+        </div>
+        <div class="gallery-caption">
+          <span class="caption-title">${img.caption}</span>
+          ${hasBefore ? '<span class="caption-sub">Before &amp; After</span>' : ''}
+        </div>
+      </button>
+    </div>
+  `;
+}).join('');
+
+/* Touch support: tap to toggle Before/After on mobile */
+document.querySelectorAll('.gallery-item.has-before').forEach(item => {
+  item.addEventListener('touchstart', e => {
+    // Only toggle if not clicking to open lightbox
+  }, { passive: true });
+});
+
+/* LIGHTBOX (With Before/After Switcher) */
+const lightbox    = document.getElementById('lightbox');
+const lbImg       = document.getElementById('lightbox-img');
+const lbCaption   = document.getElementById('lb-caption');
+const lbBaBar     = document.getElementById('lb-ba-bar');
+const lbBtnBefore = document.getElementById('lb-btn-before');
+const lbBtnAfter  = document.getElementById('lb-btn-after');
+let currentIdx    = 0;
+let lbShowingBefore = false;
+
+function updateLightboxView() {
+  const item = GALLERY_IMAGES[currentIdx];
+  if (item.beforeSrc) {
+    lbBaBar.style.display = 'inline-flex';
+    if (lbShowingBefore) {
+      lbImg.src = item.beforeSrc;
+      lbImg.alt = 'Before: ' + item.alt;
+      lbBtnBefore.classList.add('active');
+      lbBtnAfter.classList.remove('active');
+      lbCaption.innerHTML = `
+        <span class="lb-cap-title">${item.caption}</span>
+        <span class="lb-cap-state"> · Natural Before</span>
+        <span class="lb-cap-hint">(Tap image or buttons to view transformation)</span>
+      `;
+    } else {
+      lbImg.src = item.src;
+      lbImg.alt = item.alt;
+      lbBtnAfter.classList.add('active');
+      lbBtnBefore.classList.remove('active');
+      lbCaption.innerHTML = `
+        <span class="lb-cap-title">${item.caption}</span>
+        <span class="lb-cap-state"> · Transformation Result</span>
+        <span class="lb-cap-hint">(Tap image or buttons to view before)</span>
+      `;
+    }
+  } else {
+    lbBaBar.style.display = 'none';
+    lbImg.src = item.src;
+    lbImg.alt = item.alt;
+    lbCaption.innerHTML = `<span class="lb-cap-title">${item.caption}</span>`;
+  }
+}
+
+function showImage(idx) {
+  currentIdx = ((idx % GALLERY_IMAGES.length) + GALLERY_IMAGES.length) % GALLERY_IMAGES.length;
+  lbShowingBefore = false;
+  updateLightboxView();
+}
+
+document.querySelectorAll('.gallery-btn').forEach(btn => {
+  btn.addEventListener('click', () => { showImage(parseInt(btn.dataset.index, 10)); lightbox.showModal(); });
+});
+document.getElementById('lb-close').addEventListener('click', () => lightbox.close());
+document.getElementById('lb-prev').addEventListener('click', () => showImage(currentIdx - 1));
+document.getElementById('lb-next').addEventListener('click', () => showImage(currentIdx + 1));
+
+/* Switcher Buttons */
+lbBtnBefore.addEventListener('click', () => {
+  lbShowingBefore = true;
+  updateLightboxView();
+});
+lbBtnAfter.addEventListener('click', () => {
+  lbShowingBefore = false;
+  updateLightboxView();
+});
+
+/* Clicking image directly toggles Before/After in lightbox */
+lbImg.addEventListener('click', () => {
+  const item = GALLERY_IMAGES[currentIdx];
+  if (item.beforeSrc) {
+    lbShowingBefore = !lbShowingBefore;
+    updateLightboxView();
+  }
+});
+
+/* Light-dismiss (fallback for browsers without closedby attribute) */
+lightbox.addEventListener('click', e => {
+  if (e.target !== lightbox) return;
+  const r = lightbox.getBoundingClientRect();
+  const inside = r.top <= e.clientY && e.clientY <= r.top + r.height && r.left <= e.clientX && e.clientX <= r.left + r.width;
+  if (!inside) lightbox.close();
+});
+
+lightbox.addEventListener('keydown', e => {
+  if (e.key === 'ArrowLeft')  { e.preventDefault(); showImage(currentIdx - 1); }
+  if (e.key === 'ArrowRight') { e.preventDefault(); showImage(currentIdx + 1); }
+});
+
+/* REVIEWS */
+document.getElementById('reviews-grid').innerHTML = REVIEWS.map((r, i) => `
+  <article class="review-card" style="--stagger:${i % 4}">
+    <div class="stars" aria-label="${r.stars} out of 5 stars">${'★'.repeat(r.stars)}${'☆'.repeat(5 - r.stars)}</div>
+    <p class="review-text">${r.text}</p>
+    <div class="reviewer">
+      <div class="reviewer-avatar" aria-hidden="true">${r.name.charAt(0)}</div>
+      <div>
+        <div class="reviewer-name">${r.name}</div>
+        <a href="${CONTACT.reviewsUrl}" target="_blank" rel="noopener" class="reviewer-source" style="text-decoration: underline; text-underline-offset: 2px;">
+          ${r.source} &#x2197;
+        </a>
+      </div>
+    </div>
+  </article>
+`).join('');
+
+/* POLICIES accordion */
+document.getElementById('policies-container').innerHTML = POLICIES.map((p, i) => `
+  <details class="accordion-item" ${i === 0 ? 'open' : ''}>
+    <summary>
+      <span>${p.title}</span>
+      <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+    </summary>
+    <div class="accordion-body">${p.body}</div>
+  </details>
+`).join('');
+
+/* FAQ accordion */
+document.getElementById('faq-container').innerHTML = FAQ.map(f => `
+  <details class="accordion-item">
+    <summary>
+      <span>${f.q}</span>
+      <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+    </summary>
+    <div class="accordion-body"><p>${f.a}</p></div>
+  </details>
+`).join('');
+
+/* LOCATION */
+document.getElementById('studio-address-text').textContent = ADDRESS;
+document.getElementById('parking-note-text').textContent   = PARKING_NOTE;
+
+const today = new Date().toLocaleDateString('en-US', { weekday: 'long' });
+document.getElementById('hours-table').innerHTML = `<tbody>${HOURS.map(row => {
+  const closed  = row.hours.toLowerCase() === 'closed';
+  const isToday = row.day === today;
+  return `<tr class="${closed ? 'closed' : ''} ${isToday ? 'today' : ''}">
+    <td>${row.day}</td><td>${closed ? 'Closed' : row.hours}</td>
+  </tr>`;
+}).join('')}</tbody>`;
+
+/* CONTACT DETAILS */
+document.getElementById('contact-details').innerHTML = `
+  <a class="contact-link" href="tel:${CONTACT.phone}">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.338c0-1.04.849-2.088 1.875-2.088.347 0 .682.139.928.396l2.41 2.67a1.875 1.875 0 0 1 0 2.482L6.03 11.24a.375.375 0 0 0-.045.444A11.25 11.25 0 0 0 12.758 17.8a.375.375 0 0 0 .444-.045l1.432-1.44a1.875 1.875 0 0 1 2.483 0l2.67 2.41c.257.246.395.58.395.928 0 1.026-1.047 1.875-2.088 1.875C8.76 21.518 2.25 15.004 2.25 6.338Z"/></svg>
+    ${CONTACT.phone}
+  </a>
+  <a class="contact-link" href="mailto:${CONTACT.email}">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75"/></svg>
+    ${CONTACT.email}
+  </a>
+  <a class="contact-link" href="https://instagram.com/${CONTACT.instagram.replace('@','')}" target="_blank" rel="noopener">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect width="18" height="18" x="3" y="3" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".75" fill="currentColor" stroke="none"/></svg>
+    ${CONTACT.instagram}
+  </a>
+`;
+
+const SOCIAL_SVG_INSTAGRAM = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect width="18" height="18" x="3" y="3" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".75" fill="currentColor" stroke="none"/></svg>`;
+const SOCIAL_SVG_FACEBOOK  = `<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878V14.89h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/></svg>`;
+
+document.getElementById('social-row').innerHTML = `
+  <a class="social-btn" href="https://instagram.com/${CONTACT.instagram.replace('@','')}" target="_blank" rel="noopener" aria-label="Follow us on Instagram">
+    ${SOCIAL_SVG_INSTAGRAM}
+  </a>
+  <a class="social-btn" href="https://facebook.com/${CONTACT.facebook.replace(/\s+/g,'')}" target="_blank" rel="noopener" aria-label="Follow us on Facebook">
+    ${SOCIAL_SVG_FACEBOOK}
+  </a>
+`;
+
+document.getElementById('footer-social').innerHTML = `
+  <a class="social-btn" href="https://instagram.com/${CONTACT.instagram.replace('@','')}" target="_blank" rel="noopener" aria-label="Follow us on Instagram">
+    ${SOCIAL_SVG_INSTAGRAM}
+  </a>
+  <a class="social-btn" href="https://facebook.com/${CONTACT.facebook.replace(/\s+/g,'')}" target="_blank" rel="noopener" aria-label="Follow us on Facebook">
+    ${SOCIAL_SVG_FACEBOOK}
+  </a>
+`;
+
+/* FOOTER */
+document.getElementById('footer-copyright').textContent = `© ${new Date().getFullYear()} ${STUDIO_NAME}. All rights reserved. · ${CITY_STATE}`;
+
+/* ================================================================
+   PAGE INTERACTIONS
+   ================================================================ */
+
+/* Sticky nav shadow on scroll */
+const nav = document.getElementById('site-nav');
+window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 8); }, { passive: true });
+
+/* Mobile hamburger */
+const toggle  = document.getElementById('nav-toggle');
+const navMenu = document.getElementById('nav-menu');
+toggle.addEventListener('click', () => {
+  const open = navMenu.classList.toggle('open');
+  toggle.setAttribute('aria-expanded', open);
+  document.body.style.overflow = open ? 'hidden' : '';
+});
+navMenu.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => {
+    navMenu.classList.remove('open');
+    toggle.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  });
+});
+
+/* Scroll-reveal */
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal, .review-card').forEach(el => observer.observe(el));
+
+/* Scroll-spy — highlights the nav link for the section in view */
+const spyLinks = Array.from(document.querySelectorAll('#nav-menu a[href^="#"]')).filter(a => a.id !== 'nav-book-btn');
+const spySections = spyLinks
+  .map(link => document.querySelector(link.hash))
+  .filter(Boolean);
+const spyObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) return;
+    spyLinks.forEach(link => link.classList.toggle('active', link.hash === `#${entry.target.id}`));
+  });
+}, { rootMargin: '-40% 0px -55% 0px' });
+spySections.forEach(section => spyObserver.observe(section));
+
+</script>
+
+</body>
+</html>
